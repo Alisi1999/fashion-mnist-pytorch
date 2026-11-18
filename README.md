@@ -2,7 +2,7 @@
 
 An **individual deep-learning coursework project** by Seyed Ali Poorseyed. I implemented convolutional neural network (CNN) and multilayer perceptron (MLP) classifiers using PyTorch and explored image rotation and augmentation with a PyTorch Lightning training pipeline.
 
-> **Status:** This is a cleaned, refactored portfolio version of my original coursework code. Basic model smoke tests and a synthetic one-epoch training/checkpoint-loading test passed locally. The original Fashion-MNIST experiments and accuracy results have **not** been rerun using this refactored code.
+> **Status:** This is a cleaned, refactored portfolio version of my original coursework code. Basic model smoke tests and a synthetic one-epoch training/checkpoint-loading test passed locally. The original archived CNN weights have been independently evaluated on the held-out six-class test subset; a new full training run of this refactored code has **not** been completed.
 
 ## Dataset and task
 
@@ -65,11 +65,34 @@ python -m pytest -q
 
 The experiment runner uses a seeded 80/20 train/validation split. An important change from the original version is that **validation uses an unaugmented dataset instance**, avoiding random training transformations on validation samples.
 
+## Verified results from archived CNN weights
+
+The original project archive contained a CNN checkpoint at `model_checkpoints/best-epoch=4-val_acc=0.98.ckpt`. I loaded its model weights into the architecture in `networks.py` and evaluated them on the six-class **held-out Fashion-MNIST test set**. This produced **5,857 correct predictions out of 6,000 (97.62% accuracy)**, with 1,000 test images per class.
+
+![Verified per-class test accuracy](figures/verified_class_accuracy.svg)
+
+| Class | Correct / total | Accuracy |
+| --- | ---: | ---: |
+| T-shirt/top | 962 / 1,000 | 96.2% |
+| Trouser | 988 / 1,000 | 98.8% |
+| Pullover | 968 / 1,000 | 96.8% |
+| Sneaker | 982 / 1,000 | 98.2% |
+| Bag | 989 / 1,000 | 98.9% |
+| Ankle Boot | 968 / 1,000 | 96.8% |
+
+The [CSV results](results/per_class_accuracy.csv) contain the corresponding counts. Another independently evaluated historical checkpoint yielded **97.53%**. The repository also includes `evaluate_saved_checkpoint.py` for verifying an original checkpoint locally, **if you have its file**:
+
+~~~bash
+python evaluate_saved_checkpoint.py --checkpoint path/to/original.ckpt
+~~~
+
+These are test results from **previously trained weights**, not accuracy obtained by freshly training the refactored code. The model binary isn't committed because the repository is intended to remain small.
+
 ## Results and limitations
 
-The original submitted notebook includes historical saved training output, but it is not included here because it contains course instructions and identifying information. Numerical accuracy claims from that notebook have not been reproduced in this cleaned version. This repository should **not** be interpreted as a benchmark for the standard ten-class Fashion-MNIST task.
+The original submitted notebook includes historical saved training output, but it is not included here because it contains course instructions and identifying information. An archived CNN checkpoint **was** independently evaluated on the original held-out test images, as documented above, but the training procedure has not been fully repeated. This repository should **not** be interpreted as a benchmark for the standard ten-class Fashion-MNIST task.
 
-Only basic smoke tests and a short synthetic training/evaluation run have been verified locally. Full multi-epoch runs need compatible dependencies, network access for first-time dataset download and additional compute resources. A fixed environment lockfile has not yet been established.
+Three model smoke tests passed. A short real-data training / checkpoint save / reload / evaluation cycle also passed, and archived CNN weights were independently tested on all 6,000 held-out images. Full multi-epoch runs need compatible dependencies, network access for first-time dataset download and additional compute resources. A fixed environment lockfile has not yet been established.
 
 Downloaded datasets, model checkpoint binaries and TensorBoard logs are intentionally omitted.
 
