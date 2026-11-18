@@ -221,3 +221,16 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Fashion-MNIST assets and generated experiment outputs
+/data/
+/model_checkpoints/
+/lightning_logs/
+/runs/
+/logs/
+*.ckpt
+*.pth
+*.pt
+*.tfevents.*
+.DS_Store
+Thumbs.db
