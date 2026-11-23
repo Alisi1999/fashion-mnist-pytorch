@@ -2,7 +2,7 @@
 
 An **individual deep-learning coursework project** by Seyed Ali Poorseyed. I implemented convolutional neural network (CNN) and multilayer perceptron (MLP) classifiers using PyTorch and explored image rotation and augmentation with a PyTorch Lightning training pipeline.
 
-> **Status:** This is a cleaned, refactored portfolio version of my original coursework code. Basic model smoke tests and a synthetic one-epoch training/checkpoint-loading test passed locally. The original archived CNN weights have been independently evaluated on the held-out six-class test subset; a new full training run of this refactored code has **not** been completed.
+> **Status:** This is a cleaned, refactored portfolio version of my original coursework code. Model smoke tests and a short real-data training/checkpoint-loading cycle passed locally; archived CNN weights were independently evaluated on the held-out six-class test subset. A new **full multi-epoch training run** of the refactored code has not been completed.
 
 ## Dataset and task
 
