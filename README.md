@@ -98,4 +98,4 @@ Downloaded datasets, model checkpoint binaries and TensorBoard logs are intentio
 
 ## Authorship and attribution
 
-**Individual project implementation:** Seyed Ali Poorseyed. The dataset is Fashion-MNIST from [Zalando Research](https://github.com/zalandoresearch/fashion-mnist). This is a refactored presentation of the original academic work rather than a claim that the original submission was identical to the code here. No license has been selected for this repository.
+**Individual project implementation:** Seyed Ali Poorseyed. The dataset is Fashion-MNIST from [Zalando Research](https://github.com/zalandoresearch/fashion-mnist). This is a refactored presentation of the original academic work rather than a claim that the original submission was identical to the code here. The code is released under the MIT License (see `LICENSE`).
